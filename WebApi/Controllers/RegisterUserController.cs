@@ -46,11 +46,4 @@ public class RegisterUserController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete]
-    public async Task<IActionResult> Remove(int id)
-    {       
-        await _service.DeleteRegisterUser(id);
-        return Ok();
-    }
-
 }
