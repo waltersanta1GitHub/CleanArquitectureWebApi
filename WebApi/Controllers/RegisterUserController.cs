@@ -46,4 +46,26 @@ public class RegisterUserController : ControllerBase
         return Ok();
     }
 
+    [HttpPost("Nuevo")]
+    public async Task<IActionResult> NuevoMetodo([FromBody] RegistredUserModelView model)
+    {
+        if (!ModelState.IsValid)
+        {
+
+            return StatusCode(StatusCodes.Status400BadRequest, ModelState);
+
+        }
+        await _service.CreateRegisterUser(model);
+        return Ok();
+    }
+
+
+
+    [HttpDelete]
+    public async Task<IActionResult> Remove(int id)
+    {
+        await _service.DeleteRegisterUser(id);
+        return Ok();
+    }
+
 }
