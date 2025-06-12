@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApi.Controllers;
@@ -16,6 +17,7 @@ public class RegisterUserController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> GetAllRecords()
     {
        return Ok(await _service.GeAllAsync());
